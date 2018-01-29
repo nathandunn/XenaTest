@@ -1,6 +1,8 @@
 import './App.css'
 
 import React, {Component} from 'react'
+var xenaQuery = require('ucsc-xena-client/dist/xenaQuery');
+
 
 class App extends Component {
   render() {
@@ -15,5 +17,10 @@ class App extends Component {
     </div>
   }
 }
+console.log(xenaQuery);
+
+var {allCohorts} = xenaQuery;
+allCohorts('https://tcga.xenahubs.net')
+    .subscribe(resp => console.log(resp));
 
 export default App
