@@ -1,6 +1,7 @@
 import './App.css'
 
 import React, {Component} from 'react'
+import tgacPathways from './data/tgac'
 var xenaQuery = require('ucsc-xena-client/dist/xenaQuery');
 
 
@@ -17,7 +18,10 @@ class App extends Component {
     </div>
   }
 }
+console.log('query results:') ;
 console.log(xenaQuery);
+console.log('tgac pathways:') ;
+console.log(tgacPathways);
 
 var {allCohorts} = xenaQuery;
 allCohorts('https://tcga.xenahubs.net')
