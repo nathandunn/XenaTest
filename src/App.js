@@ -92,10 +92,12 @@ class App extends Component {
 
     componentWillMount() {
         // this.fetchCohortData();
+
     }
 
     componentDidMount() {
         this.fetchCohortData();
+        var loadCount = 0 ;
         allCohorts('https://tcga.xenahubs.net')
             .flatMap((cohorts) => {
                 // cohortList = cohorts;
@@ -113,7 +115,10 @@ class App extends Component {
                     })
                 );
             })
-            .subscribe(resp => console.log(resp));
+            .subscribe(resp =>
+                document.getElementById("output").innerHTML= JSON.stringify(resp)
+                // console.log(resp)
+            );
 
     }
 
