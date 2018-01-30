@@ -41,7 +41,7 @@ var geneList = [
 ];
 
 var dataSetIdDemo = 'TCGA.OV.sampleMap/mutation_wustl';
-var dataSetCohortDemo = 'TCGA%20Ovarian%20Cancer%20(OV)';
+var dataSetCohortDemo = 'TCGA Ovarian Cancer (OV)';
 
 var {allCohorts, cohortSamples, fetchCohortPreferred, sparseData} = xenaQuery;
 
@@ -51,9 +51,11 @@ var {allCohorts, cohortSamples, fetchCohortPreferred, sparseData} = xenaQuery;
 allCohorts('https://tcga.xenahubs.net')
     .flatMap((cohorts) => {
         console.log('first cohort: ' + cohorts[0] + ' vs ' + dataSetCohortDemo);
+        // return cohortSamples('https://tcga.xenahubs.net', cohorts[0], null)
         return cohortSamples('https://tcga.xenahubs.net', dataSetCohortDemo, null)
     })
     .flatMap((sampleList) => {
+        // console.log('sample list size: '+sampleList.length);
         return Rx.Observable.zipArray(
             geneList.map(gene => {
                 return sparseData('https://tcga.xenahubs.net', dataSetIdDemo, sampleList, gene)
