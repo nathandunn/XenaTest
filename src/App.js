@@ -107,6 +107,8 @@ class App extends Component {
             })
             .flatMap((sampleList) => {
                 console.log('sample list size: ' + sampleList.length);
+                // console.log(sampleList)
+                document.getElementById("samples").innerHTML= JSON.stringify(sampleList)
                 return Rx.Observable.zipArray(
                     geneList.map(gene => {
                         // console.log('map calling gene: ' + gene);
@@ -115,10 +117,10 @@ class App extends Component {
                     })
                 );
             })
-            .subscribe(resp =>
-                document.getElementById("output").innerHTML= JSON.stringify(resp)
-                // console.log(resp)
-            );
+            .subscribe(resp =>{
+                    document.getElementById("output").innerHTML= JSON.stringify(resp)
+                    // console.log(resp)
+            } );
 
     }
 
