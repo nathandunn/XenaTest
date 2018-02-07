@@ -110,15 +110,11 @@ class App extends Component {
                 console.log('sample list size: ' + sampleList.length);
                 // console.log(sampleList)
                 document.getElementById("samples").innerHTML= JSON.stringify(sampleList)
-                return Rx.Observable.zipArray(
-                    geneList.map(gene => {
-                        // console.log('map calling gene: ' + gene);
-                        // options += '<option>abcd</option>';
-                        return sparseData('https://tcga.xenahubs.net', dataSetIdDemo, sampleList, gene)
-                    })
-                );
+                return sparseData('https://tcga.xenahubs.net', dataSetIdDemo, sampleList, geneList)
             })
             .subscribe(resp =>{
+                console.log('resp')
+                console.log(resp)
                     document.getElementById("output").innerHTML= JSON.stringify(resp)
                     // console.log(resp)
             } );
