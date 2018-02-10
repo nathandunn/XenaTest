@@ -14,7 +14,7 @@
   "dependencies": {
     "react": "^16.2.0",
     "react-dom": "^16.2.0",
-    "ucsc-xena-client": "^2.40.1"
+    "ucsc-xena-client": "^2.42.0"
   },
   "devDependencies": {
     "nwb": "0.18.x"
